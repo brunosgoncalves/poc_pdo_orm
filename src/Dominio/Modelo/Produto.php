@@ -1,6 +1,6 @@
 <?php
 
-namespace Bruno\pocPDOPOO\Modelo;
+namespace Bruno\pocPDOPOO\Dominio\Modelo;
 
 class Produto
 {

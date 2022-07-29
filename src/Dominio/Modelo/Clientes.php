@@ -1,20 +1,22 @@
 <?php
 
-namespace Bruno\pocPDOPOO\Modelo;
+namespace Bruno\pocPDOPOO\Dominio\Modelo;
+
+use DateTimeInterface;
 
 class Clientes extends Pessoa
 {
     private $dataNacimento;
     private $renda;
 
-    function __construct(string $nome, int $idade, Endereco $endereco, string $dataNacimento, float $renda)
+    function __construct(?int $id,string $nome, DateTimeInterface $dataNascimento, Endereco $endereco, float $renda)
     {
-        parent::__construct($nome, $idade, $endereco);
-        $this->dataNacimento = $dataNacimento;
+        parent::__construct($id, $nome, $dataNascimento, $endereco);
+        $this->dataNacimento = $dataNascimento;
         $this->renda = $renda;
     }
 
-    public function getDataNacimento(): string
+    public function getDataNacimento(): DateTimeInterface
     {
         return $this->dataNacimento;
     }
@@ -46,6 +48,6 @@ class Clientes extends Pessoa
 
     public function __toString():string
     {
-        return "Cliente: " . $this->nome . " - anos : " . $this->idade . " - Renda " . $this->renda. " - ".$this->dataNacimento."-".$this->getEndereco()->getLogradouro()." - ".$this->getEndereco()->getNumero()." - ".$this->getEndereco()->getCidade()." - ".$this->getEndereco()->getUf()." - ".$this->getEndereco()->getCep();
+        return "Cliente: " . $this->nome . " - Renda " . $this->renda. " - ".$this->dataNacimento."-".$this->getEndereco()->getLogradouro()." - ".$this->getEndereco()->getNumero()." - ".$this->getEndereco()->getCidade()." - ".$this->getEndereco()->getUf()." - ".$this->getEndereco()->getCep();
     }
 }    

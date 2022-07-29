@@ -2,7 +2,7 @@
 
 namespace Bruno\pocPDOPOO\Infraestrutura\Repositorio;
 
-use Bruno\pocPDOPOO\Modelo\Produto;
+use Bruno\pocPDOPOO\Dominio\Modelo\Produto;
 use Bruno\pocPDOPOO\Dominio\Repositorio\repositorioProduto;
 use Bruno\pocPDOPOO\Infraestrutura\Persistencia;
 
@@ -36,7 +36,7 @@ class PdoRepositorioProduto implements repositorioProduto
 
     public function createProduto(Produto $produto): bool
     {
-        $sql = "INSERT INTO produto (nome, preco) VALUES (:nome, :preco)";
+        $sql = "INSERT INTO produto (nomeProduto, precoProduto) VALUES (:nome, :preco)";
         $stmt = $this->conxao->prepare($sql);
         $stmt->bindValue(':nome', $produto->getNomeProduto(), PDO::PARAM_STR);
         $stmt->bindValue(':preco', $produto->getPrecoProduto(), PDO::PARAM_STR);
@@ -45,7 +45,7 @@ class PdoRepositorioProduto implements repositorioProduto
 
     public function updateProduto(Produto $produto): bool
     {
-        $sql = "UPDATE produto SET nome = :nome, preco = :preco WHERE id = :id";
+        $sql = "UPDATE produto SET nomeProduto = :nome, precoProduto = :preco WHERE idProduto = :id";
         $stmt = $this->conxao->prepare($sql);
         $stmt->bindValue(':nome', $produto->getNomeProduto(), PDO::PARAM_STR);
         $stmt->bindValue(':preco', $produto->getPrecoProduto(), PDO::PARAM_STR);
@@ -55,7 +55,7 @@ class PdoRepositorioProduto implements repositorioProduto
 
     public function readProduto(Produto $produto): array
     {
-        $sql = "SELECT * FROM produto WHERE id = :id";
+        $sql = "SELECT * FROM produto WHERE idProduto = :id";
         $stmt = $this->conxao->prepare($sql);
         $stmt->bindValue(':id', $produto->getIdProduto());
         $stmt->execute();
@@ -64,7 +64,7 @@ class PdoRepositorioProduto implements repositorioProduto
 
     public function deletateProduto(Produto $produto): bool
     {
-        $sql = "DELETE FROM produto WHERE id = :id";
+        $sql = "DELETE FROM produto WHERE idProduto = :id";
         $stmt = $this->conxao->prepare($sql);
         $stmt->bindValue(':id', $produto->getIdProduto());
         return $stmt->execute();

@@ -1,8 +1,10 @@
 <?php
 
-namespace Bruno\pocPDOPOO\Modelo;
+namespace Bruno\pocPDOPOO\Dominio\Modelo;
 
 require_once 'autoload.php';
+
+use DateTimeInterface ;
 
 class Funcionario extends Pessoa implements Autenticar
 {
@@ -10,9 +12,9 @@ class Funcionario extends Pessoa implements Autenticar
     private float $salario;
     private string $senha;
 
-    function __construct(string $nome, int $idade, Endereco $endereco, string $cargo, float $salario)
+    function __construct(?int $id, string $nome, DateTimeInterface $dataNascimento, Endereco $endereco, string $cargo, float $salario)
     {
-        parent::__construct($nome, $idade, $endereco);
+        parent::__construct($id ,$nome, $dataNascimento, $endereco);
         $this->cargo = $cargo;
         $this->salario = $salario;
     }
@@ -46,7 +48,7 @@ class Funcionario extends Pessoa implements Autenticar
 
     public function __toString()
     {
-        return "Funcionario: " . $this->getNome() . " - anos : " . $this->getIdade() . " - Cargo " . $this->cargo . " - " . $this->salario. " - ".$this->getEndereco()->getLogradouro()." - ".$this->getEndereco()->getNumero()." - ".$this->getEndereco()->getCidade()." - ".$this->getEndereco()->getUf()." - ".$this->getEndereco()->getCep();
+        return "Funcionario: " . $this->getNome() . " - Cargo " . $this->cargo . " - " . $this->salario. " - ".$this->getEndereco()->getLogradouro()." - ".$this->getEndereco()->getNumero()." - ".$this->getEndereco()->getCidade()." - ".$this->getEndereco()->getUf()." - ".$this->getEndereco()->getCep();
     }
 
 

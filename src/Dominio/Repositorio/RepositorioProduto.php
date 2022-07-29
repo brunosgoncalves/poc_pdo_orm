@@ -2,7 +2,7 @@
 
 namespace Bruno\pocPDOPOO\Dominio\Repositorio;
 
-use Bruno\pocPDOPOO\Modelo\Produto;
+use Bruno\pocPDOPOO\Dominio\Modelo\Produto;
 
 interface repositorioProduto
 {

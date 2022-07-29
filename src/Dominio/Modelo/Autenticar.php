@@ -1,5 +1,5 @@
 <?php
-namespace Bruno\pocPDOPOO\Modelo;
+namespace Bruno\pocPDOPOO\Dominio\Modelo;
 
 interface Autenticar
 {
