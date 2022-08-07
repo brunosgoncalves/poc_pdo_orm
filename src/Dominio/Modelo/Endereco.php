@@ -7,16 +7,20 @@ require_once 'autoload.php';
 class Endereco
 {
     use AcessoAtributos;
+    private ?int $idendereco;
     private string $logradouro;
     private string $numero;
     private string $bairro;
     private string $cidade;
     private string $uf ;
     private string $cep;
+    private ?int $idcliente;
     
-    function __construct(string $logradouro, string $numero, string $bairro, string $cidade, string $uf, string $cep)
+    function __construct(?int $idendereco,string $logradouro, string $numero, string $bairro, string $cidade, string $uf, string $cep, ?int $idcliente)
     {
         $this->logradouro = $logradouro;
+        $this->idendereco = $idendereco;
+        $this->idcliente = $idcliente;
         $this->numero = $numero;
         $this->bairro = $bairro;
         $this->cidade = $cidade;
@@ -53,6 +57,16 @@ class Endereco
     {
         return $this->cep;
     }
+
+    public function getIdendereco(): ?int
+    {
+        return $this->idendereco;
+    }
+
+    public function getIdcliente(): ?int
+    {
+        return $this->idcliente;
+    }
     
     public function setLogradouro($logradouro): void
     {
@@ -77,5 +91,20 @@ class Endereco
     public function setUf($estado): void
     {
         $this->estado = $estado;
+    }
+
+    public function setCep($cep): void
+    {
+        $this->cep = $cep;
+    }
+
+    public function setIdendereco($idendereco): void
+    {
+        $this->idendereco = $idendereco;
+    }
+
+    public function setIdcliente($idcliente): void
+    {
+        $this->idcliente = $idcliente;
     }
 }

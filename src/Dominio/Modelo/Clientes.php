@@ -6,15 +6,18 @@ use DateTimeInterface;
 
 class Clientes extends Pessoa
 {
-    private $dataNacimento;
-    private $renda;
+    private DateTimeInterface $dataNacimento;
+    private float $renda;
 
     function __construct(?int $id,string $nome, DateTimeInterface $dataNascimento, Endereco $endereco, float $renda)
     {
         parent::__construct($id, $nome, $dataNascimento, $endereco);
         $this->dataNacimento = $dataNascimento;
         $this->renda = $renda;
+        $this->id = $id;
     }
+
+
 
     public function getDataNacimento(): DateTimeInterface
     {
@@ -24,6 +27,17 @@ class Clientes extends Pessoa
     public function getRenda(): float
     {
         return $this->renda;
+    }
+
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
     public function setDataNacimento($dataNacimento): void

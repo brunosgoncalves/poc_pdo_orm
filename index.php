@@ -10,17 +10,17 @@ use Bruno\pocPDOPOO\Dominio\Modelo\Endereco;
 use Bruno\pocPDOPOO\Dominio\Modelo\Pessoa;
 use Bruno\pocPDOPOO\Dominio\Modelo\Funcionario;
 use Bruno\pocPDOPOO\Dominio\Modelo\Clientes;
+use Bruno\pocPDOPOO\Infraestrutura\Repositorio\PdoRepositorioClientes;
 
 echo "<pre>";
 
 $repositorio = new PdoRepositorioProduto(CriadorConexoes::criaConexao()); 
 CriadorConexoes::criaConexao();
 
+/*--Ender--*/
 $endereco1 = new Endereco('Rua dos Bobos', '123', 'Bairro dos Bobos', 'São Paulo', 'SP', '0123456789');
 
-
-
-/*----*/
+/*--Func--*/
 $funcionario1 = new Funcionario(
     Null,
     'Funcionario 1',
@@ -29,6 +29,15 @@ $funcionario1 = new Funcionario(
     "Developer",
     6000.00
 
+);
+
+$cliente2 = new Clientes(
+    Null,
+    'Naruto',
+    new DateTimeImmutable('2020-01-01'),
+    $endereco1,
+    6000.00
+    
 );
 
 
@@ -60,6 +69,14 @@ echo "<hr>";
 echo "<br>";
 
 //$repositorio->deletateProduto($produto1);
+
+echo "<br>";
+
+$repositorioClientes = new PdoRepositorioClientes(CriadorConexoes::criaConexao()); 
+
+$repositorioClientes->salva($cliente2);
+
+
 
 echo "<hr>";
 
